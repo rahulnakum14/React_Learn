@@ -1,15 +1,13 @@
-import { useState } from "react";
-import Text from './components/Text'
-
 import "./App.css";
+import FetchApi from "./components/FetchApi";
+import Text from "./components/Text";
 
 function App() {
-  const [ showText, setShowText] = useState(false);
 
   return (
     <div className="App">
-      <button onClick={() => setShowText(!showText)}> Show Text</button>
-      {showText && <Text/>}
+      {/* <Text/> */}
+      <FetchApi/>
     </div>
   );
 }
