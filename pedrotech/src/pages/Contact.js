@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useContext } from "react";
+import {AppContext} from "../App";
 
-function Contact(props) {
+function Contact() {
+  const { userName } =useContext(AppContext )
+
   return (
     <div>
-      <h1> This is contact page  and user is {props.userName}</h1>
+      <h1> This is contact page  and user is {userName}</h1>
     </div>
   )
 }
