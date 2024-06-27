@@ -1,25 +1,17 @@
-import React, { useContext } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { AppContext } from "../App";
-import axios from "axios";
+import React from "react";
+import { useToggle } from "./useToggle";
 
 function Home() {
-  const { data, isLoading,refetch } = useQuery({
-    queryKey: ["cat"],
-    queryFn: () => axios.get("https://catfact.ninja/fact").then((res) => res.data)
-  });
 
-  const { userName } = useContext(AppContext);
-
-  if (isLoading) {
-    return <h1>Data Is Loading</h1>;
-  }
+  const [isVisible , toggle] = useToggle()
 
   return (
     <div>
-      <h1>This is Home Page and user is {userName}</h1>
-      <h1>This is the {data?.fact}</h1>
-      <button onClick={refetch}>Update Data</button>
+      <button onClick={toggle}>
+    
+        {isVisible ? "Hide" : "Shows"}
+      </button>
+      {isVisible && <h1>Hidden Text</h1>}
     </div>
   );
 }
